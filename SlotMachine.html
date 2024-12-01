@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Images Table</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        th, td {
+            border: 1px solid #000;
+            text-align: center;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        img {
+            width: 100px; /* Set a default width or adjust as necessary */
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Random Images Table</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Column 1</th>
+            <th>Column 2</th>
+            <th>Column 3</th>
+        </tr>
+    </thead>
+    <tbody id="imageTable">
+        <!-- Random images will be inserted here -->
+    </tbody>
+</table>
+
+<script>
+    const images = [
+        'images1.png',
+        'images2.png',
+        'images3.png',
+        'images4.png',
+        'images5.png',
+        'images6.png'
+    ];
+
+    function getRandomImage() {
+        return images[Math.floor(Math.random() * images.length)];
+    }
+
+    function generateTable() {
+        const tableBody = document.getElementById('imageTable');
+        let rows = '';
+
+        for (let i = 0; i < 7; i++) { // 7 rows
+            rows += '<tr>';
+            for (let j = 0; j < 3; j++) { // 3 columns
+                let imageSrc = getRandomImage();
+                rows += `<td><img src="${imageSrc}" alt="Random Image"></td>`;
+            }
+            rows += '</tr>';
+        }
+
+        tableBody.innerHTML = rows;
+    }
+
+    // Generate and populate the table on page load
+    generateTable();
+</script>
+
+</body>
+</html>
